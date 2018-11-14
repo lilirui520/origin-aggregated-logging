@@ -4,7 +4,7 @@ MAINTAINER OpenShift Development <dev@lists.openshift.redhat.com>
 
 EXPOSE 5601
 
-ENV ELASTICSEARCH_URL=https://logging-es:9200 \
+ENV ELASTICSEARCH_URL=${ES_HOST}:${ES_PORT} \
     HOME=/opt/app-root/src \
     KIBANA_BIN=/usr/share/kibana/bin/kibana \
     KIBANA_CONF_DIR=/etc/kibana \
@@ -26,6 +26,8 @@ RUN rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch && \
 
 ADD probe/ /usr/share/kibana/probe/
 ADD kibana.yml ${KIBANA_CONF_DIR}/
+ADD new/index.js /usr/share/kibana/src/core_plugins/kibana/
+ADD new/index_header.html /usr/share/kibana/src/core_plugins/kibana/public/management/sections/indices/edit_index_pattern/index_header/
 ADD lib/* ${HOME}/
 ADD run.sh utils install.sh prep-install.${RELEASE_STREAM} ${HOME}/
 RUN ${HOME}/install.sh
