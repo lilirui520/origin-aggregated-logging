@@ -26,8 +26,8 @@ RUN rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch && \
 
 ADD probe/ /usr/share/kibana/probe/
 ADD kibana.yml ${KIBANA_CONF_DIR}/
-ADD new/index.js /usr/share/kibana/src/core_plugins/kibana/
-ADD new/index_header.html /usr/share/kibana/src/core_plugins/kibana/public/management/sections/indices/edit_index_pattern/index_header/
+#ADD new/index.js /usr/share/kibana/src/core_plugins/kibana/
+#ADD new/index_header.html /usr/share/kibana/src/core_plugins/kibana/public/management/sections/indices/edit_index_pattern/index_header/
 ADD lib/* ${HOME}/
 ADD run.sh utils install.sh prep-install.${RELEASE_STREAM} ${HOME}/
 RUN ${HOME}/install.sh
