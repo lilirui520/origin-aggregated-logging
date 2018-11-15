@@ -24,8 +24,8 @@ RUN rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch && \
     yum install -y --setopt=tsflags=nodocs  ${INSTALLED_PKGS} && \
     yum clean all
 
-ADD new/index.js    /usr/share/kibana/src/core_plugins/kibana/
-ADD new/index_header.html    /usr/share/kibana/src/core_plugins/kibana/public/management/sections/indices/edit_index_pattern/index_header/
+#ADD new/index.js    /usr/share/kibana/src/core_plugins/kibana/
+#ADD new/index_header.html    /usr/share/kibana/src/core_plugins/kibana/public/management/sections/indices/edit_index_pattern/index_header/
 ADD probe/ /usr/share/kibana/probe/
 ADD kibana.yml ${KIBANA_CONF_DIR}/
 ADD lib/* ${HOME}/
